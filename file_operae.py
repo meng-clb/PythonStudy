@@ -4,6 +4,7 @@ f_test = open("test.txt", "r")
 # 拷贝test.txt.bak
 f_test_bak = open("test.txt.bak", "w")
 
+
 count = 0
 # 符合条件的拷贝出来
 for x in f_test:
