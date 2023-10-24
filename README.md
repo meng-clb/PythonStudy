@@ -1,2 +1,2 @@
 # PythonStudy
-py学习过程中的小测试
+py学习的过程与代码
