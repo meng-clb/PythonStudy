@@ -6,6 +6,10 @@ print_file_info(file_name)
 
 
 def print_file_info(file_name):
+	"""
+	打印文件内的内容
+	:param file_name: 文件路径
+	"""
 	try:
 		f = open(file_name, "r", encoding="UTF-8")
 		print(f.read())
@@ -18,7 +22,7 @@ def print_file_info(file_name):
 			print('文件未打开')
 
 
-print_file_info('../test.txt')
+# print_file_info('../test.txt')
 
 """
 append_to_file(file_name, data)
@@ -27,6 +31,11 @@ append_to_file(file_name, data)
 
 
 def append_to_file(file_name, data):
+	"""
+	将传入的数据写入到文件内
+	:param file_name: 文件路径
+	:param data: 写入的数据
+	"""
 	try:
 		file = open(file_name, "a", encoding="UTF-8")
 		file.write('\n' + data)
@@ -39,4 +48,3 @@ def append_to_file(file_name, data):
 			pass
 
 
-# append_to_file('../test.txt', '这是我追加的数据')
