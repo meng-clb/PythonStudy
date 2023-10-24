@@ -5,6 +5,12 @@
 # my_package.model1.prModel()
 # my_package.model2.prModel2()
 
+# 引入第三方下载的包
+# import numpy
+# nums = dir(numpy)
+# for x in nums:
+# 	print(x)
+
 # 通过from引入某个模块
 # from my_package import model1
 # model1.prModel()
