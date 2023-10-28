@@ -8,5 +8,24 @@
 5. 通过PyEcharts进行图形绘制
 """
 
+from data_define import Record
+from file_define import TextFileReader, JsonFileReader
 
+text_file_reader = TextFileReader("one.txt")
+json_file_reader = JsonFileReader("two.txt")
 
+jan_data: list[Record] = text_file_reader.read_data()
+feb_data: list[Record] = json_file_reader.read_data()
+# 将两个月的数据合并到一起
+all_data: list[Record] = jan_data + feb_data
+
+# 开始进行数据计算
+data_dict = {}
+for recoder in all_data:
+	if recoder.date in data_dict.keys():
+		# 如果当前日期存在, 对其所对应的money进行累计
+		data_dict[recoder.date] += recoder.money
+	else:
+		data_dict[recoder.date] = recoder.money
+
+print(data_dict)

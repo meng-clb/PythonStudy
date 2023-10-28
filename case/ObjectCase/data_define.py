@@ -6,4 +6,4 @@ class Record:
 		self.province = province
 
 	def __str__(self):
-		print(f"{self.date},{self.order_id}, {self.money}, {self.province}")
+		return f"{self.date},{self.order_id}, {self.money}, {self.province}"

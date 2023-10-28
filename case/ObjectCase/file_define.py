@@ -17,7 +17,7 @@ class TextFileReader(FileReader):
 
 	# 复写父类的方法
 	def read_data(self) -> list[Record]:
-		record_list = []
+		record_list: list[Record] = []
 		f = open(self.path, "r", encoding="UTF-8")
 		for line in f.readlines():
 			line = line.strip()
@@ -25,7 +25,37 @@ class TextFileReader(FileReader):
 			record = Record(data_list[0], data_list[1], int(data_list[2]), data_list[3])
 			record_list.append(record)
 
+		f.close()
+		return record_list
+
+
+class JsonFileReader(FileReader):
+	def __init__(self, path):
+		self.path = path
+
+	# 复写父类的方法
+	def read_data(self) -> list[Record]:
+		record_list: list[Record] = []
+		f = open(self.path, "r", encoding="UTF-8")
+		for line in f.readlines():
+			line = line.strip()
+			f_dict = json.loads(line)
+			record = Record(f_dict['date'], f_dict['order_id'], int(f_dict['money']), f_dict['province'])
+			record_list.append(record)
+
+		f.close()
+		return record_list
+
 
 if __name__ == '__main__':
 	test_file_reader = TextFileReader("one.txt")
-	test_file_reader.read_data()
+	json_file_reader = JsonFileReader("two.txt")
+	list1 = test_file_reader.read_data()
+	list2 = json_file_reader.read_data()
+
+	for l in list1:
+		print(l)
+
+	for l in list2:
+		print(l)
+
