@@ -10,6 +10,8 @@
 
 from data_define import Record
 from file_define import TextFileReader, JsonFileReader
+from pyecharts.charts import Bar
+from pyecharts.options import *
 
 text_file_reader = TextFileReader("one.txt")
 json_file_reader = JsonFileReader("two.txt")
@@ -28,4 +30,9 @@ for recoder in all_data:
 	else:
 		data_dict[recoder.date] = recoder.money
 
-print(data_dict)
+# 可视化图标开发
+bar = Bar()
+bar.add_xaxis(list(data_dict.keys()))
+bar.add_yaxis("销售额", list(data_dict.values()))
+
+bar.render('销售记录.html')
